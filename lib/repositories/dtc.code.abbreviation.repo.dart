@@ -2,11 +2,11 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart';
-import 'package:dtc_harley_codes/http/http.exception.dart';
-import 'package:dtc_harley_codes/models/dtc.code.abbreviation.dart';
-import 'package:dtc_harley_codes/common/injection.dart';
-import 'package:dtc_harley_codes/common/settings.dart';
-import 'package:dtc_harley_codes/models/token.dart';
+import 'package:dtc_harleys_app/http/http.exception.dart';
+import 'package:dtc_harleys_app/models/dtc.code.abbreviation.dart';
+import 'package:dtc_harleys_app/common/injection.dart';
+import 'package:dtc_harleys_app/common/settings.dart';
+import 'package:dtc_harleys_app/models/token.dart';
 
 const String _dtcCodeAbbreviationUrl = '/dtccodeabbreviation';
 

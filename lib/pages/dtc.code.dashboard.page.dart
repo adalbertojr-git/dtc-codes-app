@@ -1,16 +1,14 @@
+import 'package:dtc_harleys_app/controllers/app.controller.dart';
 import 'package:flutter/material.dart';
-import 'package:dtc_harley_codes/pages/dtc.code.access.oldmodels.page.dart';
-import 'package:dtc_harley_codes/pages/dtc.code.know.more.page.dart';
-import 'package:dtc_harley_codes/pages/dtc.code.list.page.dart';
-import 'package:dtc_harley_codes/pages/dtc.code.abbreviation.list.page.dart';
-import 'package:dtc_harley_codes/pages/dtc.code.access.newmodels.page.dart';
-import 'package:dtc_harley_codes/components/my.bottom.appbar.dart';
+import 'package:dtc_harleys_app/pages/dtc.code.access.oldmodels.page.dart';
+import 'package:dtc_harleys_app/pages/dtc.code.know.more.page.dart';
+import 'package:dtc_harleys_app/pages/dtc.code.list.page.dart';
+import 'package:dtc_harleys_app/pages/dtc.code.abbreviation.list.page.dart';
+import 'package:dtc_harleys_app/pages/dtc.code.access.newmodels.page.dart';
 
-const List<String> _listAdmScreens = [
-  "Códigos DTC",
-  "Siglas",
-  "Saiba mais",
-];
+const String _labelAppTitle = 'Códigos DTC Harleys';
+
+const List<String> _listAdmScreens = ["Códigos DTC", "Siglas", "Saiba mais"];
 
 const List<String> _listAdmScreensDesc = [
   "Códigos de erro catalogados pela HD",
@@ -25,7 +23,12 @@ const List<IconData> _listAdmIcons = [
 ];
 
 // ignore: must_be_immutable
-class DtcCodeDashboardPage extends StatelessWidget {
+class DtcCodeDashboardPage extends StatefulWidget {
+  @override
+  State<DtcCodeDashboardPage> createState() => _DtcCodeDashboardPageState();
+}
+
+class _DtcCodeDashboardPageState extends State<DtcCodeDashboardPage> {
   final List<Widget> _listAdmWidgets = [
     DtcCodeListPage(),
     DtcCodeAbbreviationListPage(),
@@ -35,149 +38,161 @@ class DtcCodeDashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //bottomNavigationBar: MyBottomAppBar(),
-      body: Stack(
-        children: <Widget>[_dashBg(), _content(context)],
-      ),
+      appBar: _appBar(),
+      body: Stack(children: <Widget>[_dashBg(), _content(context)]),
     );
   }
 
+  AppBar _appBar() => AppBar(
+    elevation: 1.0,
+    leading: Builder(
+      builder:
+          (context) => Row(
+            children: [
+              IconButton(
+                icon: Icon(Icons.menu_rounded),
+                onPressed: () => Scaffold.of(context).openDrawer(),
+              ),
+            ],
+          ),
+    ),
+    title: Text(
+      _labelAppTitle,
+      style: TextStyle(color: Colors.white, fontSize: 25.0),
+    ),
+    centerTitle: true,
+    toolbarHeight: 40.0,
+    actions: <Widget>[
+      GestureDetector(
+        child: Icon(
+          AppController.instance.isDarkTheme
+              ? Icons.light_mode
+              : Icons.dark_mode,
+          color:
+              AppController.instance.isDarkTheme ? Colors.white : Colors.black,
+        ),
+        onTap: () {
+          setState(() {
+            AppController.instance.changeTheme();
+          });
+        },
+      ),
+      SizedBox(width: 10),
+    ],
+    backgroundColor: Colors.deepOrange[300],
+  );
+
   _dashBg() => Column(
-        children: <Widget>[
-          Expanded(
-            child: Container(color: Colors.deepOrange[300]),
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(color: Colors.transparent),
-          ),
-        ],
-      );
+    children: <Widget>[
+      Expanded(child: Container(color: Colors.deepOrange[300])),
+      Expanded(flex: 2, child: Container(color: Colors.transparent)),
+    ],
+  );
 
   _content(BuildContext context) => Container(
-        child: Column(
-          children: <Widget>[
-            _header(context),
-            _bar(context),
-            _grid(),
-          ],
-        ),
-      );
+    child: Column(children: <Widget>[_header(context), _bar(context), _grid()]),
+  );
 
   _header(BuildContext context) => ListTile(
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-          ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        contentPadding: EdgeInsets.only(left: 10, right: 10, top: 30),
-        title: const Text(
-          'Códigos DTC',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 22.0,
-          ),
-          textAlign: TextAlign.center,
-        ),
-        subtitle: const Text(
-          'Diagnostic Trouble Codes',
-          style: TextStyle(color: Colors.white60),
-          textAlign: TextAlign.center,
-        ),
-        trailing: CircleAvatar(
-          backgroundColor: Colors.lightBlueAccent,
-          radius: 30.0,
-          backgroundImage: AssetImage('assets/imgs/codigosdtc.png'),
-        ),
-      );
+    leading: IconButton(
+      icon: Icon(Icons.arrow_back, color: Colors.white),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    ),
+    contentPadding: EdgeInsets.only(left: 10, right: 10, top: 30),
+    title: const Text(
+      'Códigos DTC',
+      style: TextStyle(color: Colors.white, fontSize: 22.0),
+      textAlign: TextAlign.center,
+    ),
+    subtitle: const Text(
+      'Diagnostic Trouble Codes',
+      style: TextStyle(color: Colors.white60),
+      textAlign: TextAlign.center,
+    ),
+    trailing: CircleAvatar(
+      backgroundColor: Colors.lightBlueAccent,
+      radius: 30.0,
+      backgroundImage: AssetImage('assets/imgs/codigosdtc.png'),
+    ),
+  );
 
   _bar(BuildContext context) => Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          _BarButton(
-            'Até 2004',
-            'Forma de acesso',
-            Icons.motorcycle_outlined,
-            Colors.orange,
-            onClick: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (_gContext) => DtcCodeAccessOldModelsPage()),
-              );
-            },
-          ),
-          _BarButton(
-            'A partir de 2005',
-            'Forma de acesso',
-            Icons.motorcycle_sharp,
-            Colors.white,
-            onClick: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (_gContext) => DtcCodeAccessNewModelsPage()),
-              );
-            },
-          ),
-        ],
-      );
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: <Widget>[
+      _BarButton(
+        'Até 2004',
+        'Forma de acesso',
+        Icons.motorcycle_outlined,
+        Colors.orange,
+        onClick: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_gContext) => DtcCodeAccessOldModelsPage(),
+            ),
+          );
+        },
+      ),
+      _BarButton(
+        'A partir de 2005',
+        'Forma de acesso',
+        Icons.motorcycle_sharp,
+        Colors.white,
+        onClick: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_gContext) => DtcCodeAccessNewModelsPage(),
+            ),
+          );
+        },
+      ),
+    ],
+  );
 
   _grid() => Expanded(
-        child: Container(
-          padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
-          child: ListView.builder(
-            itemCount: _listAdmScreens.length,
-            itemBuilder: _listItem,
-          ),
-        ),
-      );
+    child: Container(
+      padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
+      child: ListView.builder(
+        itemCount: _listAdmScreens.length,
+        itemBuilder: _listItem,
+      ),
+    ),
+  );
 
   Widget _listItem(BuildContext context, int index) => Card(
-        color: Colors.deepOrange[100],
-        shadowColor: Colors.black,
-        child: Column(
-          children: <Widget>[
-            ListTile(
-              leading: Icon(
-                _listAdmIcons[index],
-                size: 50,
-                color: Colors.orange,
+    color: Colors.deepOrange[100],
+    shadowColor: Colors.black,
+    child: Column(
+      children: <Widget>[
+        ListTile(
+          leading: Icon(_listAdmIcons[index], size: 50, color: Colors.orange),
+          title: Text(
+            _listAdmScreens[index],
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          subtitle: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                _listAdmScreensDesc[index],
+                style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.normal),
               ),
-              title: Text(
-                _listAdmScreens[index],
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              subtitle: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    _listAdmScreensDesc[index],
-                    style: TextStyle(
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                ],
-              ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (_gContext) => _listAdmWidgets[index]),
-                );
-              },
-            )
-          ],
+            ],
+          ),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_gContext) => _listAdmWidgets[index]),
+            );
+          },
         ),
-      );
+      ],
+    ),
+  );
 }
 
 class _BarButton extends StatelessWidget {
@@ -187,8 +202,13 @@ class _BarButton extends StatelessWidget {
   final Color iconColor;
   final Function onClick; //callback
 
-  _BarButton(this.title, this.subtitle, this.icon, this.iconColor,
-      {required this.onClick});
+  _BarButton(
+    this.title,
+    this.subtitle,
+    this.icon,
+    this.iconColor, {
+    required this.onClick,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -202,18 +222,14 @@ class _BarButton extends StatelessWidget {
           },
           child: Container(
             padding: EdgeInsets.all(8),
-            height: 100,
+            height: 110,
             width: MediaQuery.of(context).size.width / 2 - 15,
             //width: 150,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Icon(
-                  icon,
-                  color: iconColor,
-                  size: 50.0,
-                ),
+                Icon(icon, color: iconColor, size: 50.0),
                 Text(
                   title,
                   style: TextStyle(
@@ -221,12 +237,7 @@ class _BarButton extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Text(
-                  subtitle,
-                  style: TextStyle(
-                    fontSize: 12.0,
-                  ),
-                ),
+                Text(subtitle, style: TextStyle(fontSize: 12.0)),
               ],
             ),
           ),

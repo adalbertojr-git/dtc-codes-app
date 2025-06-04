@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:dtc_harley_codes/models/dtc.code.dart';
-import 'package:dtc_harley_codes/repositories/dtc.code.repo.dart';
+import 'package:dtc_harleys_app/models/dtc.code.dart';
+import 'package:dtc_harleys_app/repositories/dtc.code.repo.dart';
 import 'package:mobx/mobx.dart';
 
 part 'dtc.code.list.controller.g.dart';

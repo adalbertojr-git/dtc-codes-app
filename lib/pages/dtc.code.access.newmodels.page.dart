@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:dtc_harley_codes/components/my.appbar.dart';
-import 'package:dtc_harley_codes/components/my.bottom.appbar.dart';
+import 'package:dtc_harleys_app/components/my.appbar.dart';
+import 'package:dtc_harleys_app/components/my.bottom.appbar.dart';
 
 const String _title = 'A partir de 2005';
 

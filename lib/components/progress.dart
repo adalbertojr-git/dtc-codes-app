@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 //import 'package:flare_flutter/flare_actor.dart';
-import 'package:dtc_harley_codes/components/degradee.background.dart';
+import 'package:dtc_harleys_app/components/degradee.background.dart';
 
 const String _pathFlareActor = 'lib/assets/anims/splash.flr';
 

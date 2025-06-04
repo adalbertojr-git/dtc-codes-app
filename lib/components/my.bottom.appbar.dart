@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:dtc_harley_codes/controllers/app.controller.dart';
+import 'package:dtc_harleys_app/controllers/app.controller.dart';
 
 // ignore: must_be_immutable
 class MyBottomAppBar extends StatefulWidget implements PreferredSizeWidget {

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:asuka/asuka.dart';
-import 'package:dtc_harley_codes/controllers/app.controller.dart';
-import 'package:dtc_harley_codes/pages/dtc.code.dashboard.page.dart';
-import 'package:dtc_harley_codes/common/injection.dart';
+import 'package:dtc_harleys_app/controllers/app.controller.dart';
+import 'package:dtc_harleys_app/pages/dtc.code.dashboard.page.dart';
+import 'package:dtc_harleys_app/common/injection.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AppController.instance.loadTheme();
   setupLocator();
-  runApp(const MyApp());
+  runApp(const DTCHarleysApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class DTCHarleysApp extends StatelessWidget {
+  const DTCHarleysApp({super.key});
 
   // This widget is the root of your application.
   @override

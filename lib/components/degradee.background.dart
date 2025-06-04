@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:dtc_harley_codes/controllers/app.controller.dart';
+import 'package:dtc_harleys_app/controllers/app.controller.dart';
 
 class DegradeBackground extends StatelessWidget {
   final Widget _widget;

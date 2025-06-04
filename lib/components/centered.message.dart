@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:dtc_harley_codes/components/button.dart';
-import 'package:dtc_harley_codes/components/degradee.background.dart';
-import 'package:dtc_harley_codes/common/messages.dart';
+import 'package:dtc_harleys_app/components/button.dart';
+import 'package:dtc_harleys_app/components/degradee.background.dart';
+import 'package:dtc_harleys_app/common/messages.dart';
 
 class CenteredMessage extends StatefulWidget {
   final String message;

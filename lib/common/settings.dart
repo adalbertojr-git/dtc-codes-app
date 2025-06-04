@@ -1,4 +1,4 @@
-import 'package:dtc_harley_codes/http/logging.Interceptor.dart';
+import 'package:dtc_harleys_app/http/logging.Interceptor.dart';
 import 'package:http/http.dart';
 import 'package:http_interceptor/http_interceptor.dart';
 

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:dtc_harley_codes/common/labels.and.hints.dart';
-import 'package:dtc_harley_codes/common/messages.dart';
-import 'package:dtc_harley_codes/components/centered.message.dart';
-import 'package:dtc_harley_codes/components/my.text.form.field.dart';
-import 'package:dtc_harley_codes/components/progress.dart';
-import 'package:dtc_harley_codes/controllers/dtc.code.abbreviation.list.controller.dart';
-import 'package:dtc_harley_codes/models/dtc.code.abbreviation.dart';
-import 'package:dtc_harley_codes/components/my.appbar.dart';
-import 'package:dtc_harley_codes/components/my.bottom.appbar.dart';
+import 'package:dtc_harleys_app/common/labels.and.hints.dart';
+import 'package:dtc_harleys_app/common/messages.dart';
+import 'package:dtc_harleys_app/components/centered.message.dart';
+import 'package:dtc_harleys_app/components/my.text.form.field.dart';
+import 'package:dtc_harleys_app/components/progress.dart';
+import 'package:dtc_harleys_app/controllers/dtc.code.abbreviation.list.controller.dart';
+import 'package:dtc_harleys_app/models/dtc.code.abbreviation.dart';
+import 'package:dtc_harleys_app/components/my.appbar.dart';
+import 'package:dtc_harleys_app/components/my.bottom.appbar.dart';
 
 const String _title = 'Abreviaturas';
 

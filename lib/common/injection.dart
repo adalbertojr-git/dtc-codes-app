@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:dtc_harley_codes/models/token.dart';
+import 'package:dtc_harleys_app/models/token.dart';
 
 final locator = GetIt.instance;
 
