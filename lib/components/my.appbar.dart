@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const String _pathLogo = 'assets/imgs/logo.png';
+const String _pathLogo = 'lib/assets/imgs/codigosdtc.png';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget{
   final String _title;
@@ -19,7 +19,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget{
               right: 10,
             ),
             child: CircleAvatar(
-              backgroundColor: Colors.white,
+              backgroundColor: Colors.lightBlueAccent,
               child: Image.asset(_pathLogo),
             ),
           ),

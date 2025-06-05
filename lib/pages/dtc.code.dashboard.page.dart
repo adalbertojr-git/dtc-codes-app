@@ -89,33 +89,13 @@ class _DtcCodeDashboardPageState extends State<DtcCodeDashboardPage> {
     ],
   );
 
-  _content(BuildContext context) => Container(
-    child: Column(children: <Widget>[_header(context), _bar(context), _grid()]),
-  );
+  _content(BuildContext context) =>
+      Container(child: Column(children: <Widget>[_bar(context), _grid(), _circleAvatar(context)]));
 
-  _header(BuildContext context) => ListTile(
-    leading: IconButton(
-      icon: Icon(Icons.arrow_back, color: Colors.white),
-      onPressed: () {
-        Navigator.of(context).pop();
-      },
-    ),
-    contentPadding: EdgeInsets.only(left: 10, right: 10, top: 30),
-    title: const Text(
-      'Códigos DTC',
-      style: TextStyle(color: Colors.white, fontSize: 22.0),
-      textAlign: TextAlign.center,
-    ),
-    subtitle: const Text(
-      'Diagnostic Trouble Codes',
-      style: TextStyle(color: Colors.white60),
-      textAlign: TextAlign.center,
-    ),
-    trailing: CircleAvatar(
-      backgroundColor: Colors.lightBlueAccent,
-      radius: 30.0,
-      backgroundImage: AssetImage('assets/imgs/codigosdtc.png'),
-    ),
+  _circleAvatar(BuildContext context) => CircleAvatar(
+    backgroundColor: Colors.white,
+    radius: 110.0,
+    backgroundImage: AssetImage('lib/assets/imgs/codigosdtc.png'),
   );
 
   _bar(BuildContext context) => Row(
