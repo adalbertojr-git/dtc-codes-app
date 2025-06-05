@@ -4,15 +4,14 @@ import 'package:glutton/glutton.dart';
 const String _labelDarkTheme = 'darkTheme';
 
 class AppController extends ChangeNotifier {
-
   static AppController instance = AppController();
   bool isDarkTheme = false;
 
   Future<void> loadTheme() async {
-    isDarkTheme = await Glutton.vomit(_labelDarkTheme) ?? false;
+    isDarkTheme = false; //await Glutton.vomit(_labelDarkTheme) ?? false;
   }
 
-  changeTheme () {
+  changeTheme() {
     isDarkTheme = !isDarkTheme;
     notifyListeners();
     Glutton.eat(_labelDarkTheme, isDarkTheme);

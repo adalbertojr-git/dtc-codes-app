@@ -1,7 +1,7 @@
+import 'package:dtc_harleys_app/pages/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:asuka/asuka.dart';
 import 'package:dtc_harleys_app/controllers/app.controller.dart';
-import 'package:dtc_harleys_app/pages/dtc.code.dashboard.page.dart';
 import 'package:dtc_harleys_app/common/injection.dart';
 
 void main() async {
@@ -31,7 +31,7 @@ class DTCHarleysApp extends StatelessWidget {
             ? Brightness.dark
             : Brightness.light,
       ),
-      home: DtcCodeDashboardPage(),
+      home: Loading(),
       builder: Asuka.builder,
       navigatorObservers: [
             Asuka.asukaHeroController

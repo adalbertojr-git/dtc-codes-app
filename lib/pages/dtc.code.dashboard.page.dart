@@ -39,7 +39,8 @@ class _DtcCodeDashboardPageState extends State<DtcCodeDashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _appBar(),
-      body: Stack(children: <Widget>[_dashBg(), _content(context)]),
+      body: Stack(children: <Widget>[_dashBg(), _content(context),
+      ]),
     );
   }
 
@@ -85,17 +86,19 @@ class _DtcCodeDashboardPageState extends State<DtcCodeDashboardPage> {
   _dashBg() => Column(
     children: <Widget>[
       Expanded(child: Container(color: Colors.deepOrange[300])),
-      Expanded(flex: 2, child: Container(color: Colors.transparent)),
+      Expanded(flex: 2, child: Container(color: Colors.transparent),),
     ],
   );
 
-  _content(BuildContext context) =>
-      Container(child: Column(children: <Widget>[_bar(context), _grid(), _circleAvatar(context)]));
-
-  _circleAvatar(BuildContext context) => CircleAvatar(
-    backgroundColor: Colors.white,
-    radius: 110.0,
-    backgroundImage: AssetImage('lib/assets/imgs/codigosdtc.png'),
+  _content(BuildContext context) => Container(
+    child: Column(
+      children: <Widget>[
+        SizedBox(height: 50),
+        _bar(context),
+        SizedBox(height: 35),
+        _grid(),
+      ],
+    ),
   );
 
   _bar(BuildContext context) => Row(
