@@ -1,12 +1,10 @@
 import 'package:dtc_harleys_app/pages/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:asuka/asuka.dart';
-import 'package:dtc_harleys_app/controllers/app.controller.dart';
 import 'package:dtc_harleys_app/common/injection.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await AppController.instance.loadTheme();
   setupLocator();
   runApp(const DTCHarleysApp());
 }
@@ -27,9 +25,7 @@ class DTCHarleysApp extends StatelessWidget {
         //bottomAppBarColor: Colors.deepOrange[300],
         primaryColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        brightness: AppController.instance.isDarkTheme
-            ? Brightness.dark
-            : Brightness.light,
+        brightness: Brightness.light,
       ),
       home: Loading(),
       builder: Asuka.builder,

@@ -1,4 +1,3 @@
-import 'package:dtc_harleys_app/controllers/app.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:dtc_harleys_app/pages/dtc.code.access.oldmodels.page.dart';
 import 'package:dtc_harleys_app/pages/dtc.code.know.more.page.dart';
@@ -63,23 +62,6 @@ class _DtcCodeDashboardPageState extends State<DtcCodeDashboardPage> {
     ),
     centerTitle: true,
     toolbarHeight: 40.0,
-    actions: <Widget>[
-      GestureDetector(
-        child: Icon(
-          AppController.instance.isDarkTheme
-              ? Icons.light_mode
-              : Icons.dark_mode,
-          color:
-              AppController.instance.isDarkTheme ? Colors.white : Colors.black,
-        ),
-        onTap: () {
-          setState(() {
-            AppController.instance.changeTheme();
-          });
-        },
-      ),
-      SizedBox(width: 10),
-    ],
     backgroundColor: Colors.deepOrange[300],
   );
 
