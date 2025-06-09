@@ -1,3 +1,8 @@
+import 'dart:async';
+import 'dart:io';
+import 'package:dtc_harleys_app/pages/privacy.page.dart';
+import 'package:flutter/foundation.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:dtc_harleys_app/common/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:dtc_harleys_app/pages/dtc.code.access.oldmodels.page.dart';
@@ -9,17 +14,18 @@ import 'package:dtc_harleys_app/pages/dtc.code.access.newmodels.page.dart';
 const String _labelAppTitle = 'DTC Harleys App';
 const String _pathLogo = 'lib/assets/imgs/codigosdtc.png';
 const String _labelPrivacy = 'Política de privacidade';
-const List<String> _listAdmScreens = ["Códigos DTC", "Siglas", "Saiba mais"];
-const List<String> _listAdmScreensDesc = [
+const List<String> _listScreens = ["Códigos DTC", "Siglas", "Saiba mais"];
+const List<String> _listScreensDesc = [
   "Códigos de erro catalogados pela HD",
   "Siglas utilizadas nos erros",
   "Saiba mais sobre os Códigos DTC",
 ];
-const List<IconData> _listAdmIcons = [
+const List<IconData> _listIcons = [
   Icons.error_outline_rounded,
   Icons.abc_outlined,
   Icons.info,
 ];
+String remotePDFpath = "";
 
 // ignore: must_be_immutable
 class DtcCodeDashboardPage extends StatefulWidget {
@@ -28,11 +34,21 @@ class DtcCodeDashboardPage extends StatefulWidget {
 }
 
 class _DtcCodeDashboardPageState extends State<DtcCodeDashboardPage> {
-  final List<Widget> _listAdmWidgets = [
+  final List<Widget> _listWidgets = [
     DtcCodeListPage(),
     DtcCodeAbbreviationListPage(),
     DtcCodeKnowMorePage(),
   ];
+
+    @override
+  void initState() {
+    super.initState();
+    createFileOfPdfUrl().then((f) {
+      setState(() {
+        remotePDFpath = f.path;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -131,7 +147,7 @@ class _DtcCodeDashboardPageState extends State<DtcCodeDashboardPage> {
         ListTile(
           leading: Icon(Icons.privacy_tip),
           title: Text(_labelPrivacy),
-          /*onTap: () async {
+          onTap: () async {
             if (remotePDFpath.isNotEmpty) {
               Navigator.push(
                 context,
@@ -140,7 +156,7 @@ class _DtcCodeDashboardPageState extends State<DtcCodeDashboardPage> {
                 ),
               );
             }
-          },*/
+          },
         ),
       ],
     ),
@@ -202,7 +218,7 @@ class _DtcCodeDashboardPageState extends State<DtcCodeDashboardPage> {
     child: Container(
       padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: ListView.builder(
-        itemCount: _listAdmScreens.length,
+        itemCount: _listScreens.length,
         itemBuilder: _listItem,
       ),
     ),
@@ -214,9 +230,9 @@ class _DtcCodeDashboardPageState extends State<DtcCodeDashboardPage> {
     child: Column(
       children: <Widget>[
         ListTile(
-          leading: Icon(_listAdmIcons[index], size: 50, color: Colors.orange),
+          leading: Icon(_listIcons[index], size: 50, color: Colors.orange),
           title: Text(
-            _listAdmScreens[index],
+            _listScreens[index],
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           subtitle: Column(
@@ -224,7 +240,7 @@ class _DtcCodeDashboardPageState extends State<DtcCodeDashboardPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                _listAdmScreensDesc[index],
+                _listScreensDesc[index],
                 style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.normal),
               ),
             ],
@@ -232,13 +248,38 @@ class _DtcCodeDashboardPageState extends State<DtcCodeDashboardPage> {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (_gContext) => _listAdmWidgets[index]),
+              MaterialPageRoute(builder: (_gContext) => _listWidgets[index]),
             );
           },
         ),
       ],
     ),
   );
+
+
+  Future<File> createFileOfPdfUrl() async {
+    Completer<File> completer = Completer();
+    print("Start download file from internet!");
+    try {
+      final url =
+          "https://firebasestorage.googleapis.com/v0/b/hcslzapp.appspot.com/o/docs%2FPOL%C3%8DTICA%20DE%20PRIVACIDADE.pdf?alt=media&token=7d977af4-9463-4053-a802-e6d1bb4265cb";
+      final filename = url.substring(url.lastIndexOf("/") + 1);
+      var request = await HttpClient().getUrl(Uri.parse(url));
+      var response = await request.close();
+      var bytes = await consolidateHttpClientResponseBytes(response);
+      var dir = await getApplicationDocumentsDirectory();
+      print("Download files");
+      print("${dir.path}/$filename");
+      File file = File("${dir.path}/$filename");
+
+      await file.writeAsBytes(bytes, flush: true);
+      completer.complete(file);
+    } catch (e) {
+      throw Exception('Error parsing asset file!');
+    }
+
+    return completer.future;
+  }
 }
 
 class _BarButton extends StatelessWidget {
