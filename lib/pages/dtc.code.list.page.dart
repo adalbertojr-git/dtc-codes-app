@@ -95,7 +95,7 @@ class DtcCodeListPageState extends State<DtcCodeListPage> {
                 itemBuilder: (_, int i) {
                   return Container(
                     decoration: BoxDecoration(
-                      color: Colors.deepOrange[300],
+                      color: Colors.deepOrange[100],
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.circular(20.0),
                     ),

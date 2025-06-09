@@ -19,7 +19,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget{
               right: 10,
             ),
             child: CircleAvatar(
-              backgroundColor: Colors.lightBlueAccent,
+              backgroundColor: Colors.deepOrange[300],
               child: Image.asset(_pathLogo),
             ),
           ),
