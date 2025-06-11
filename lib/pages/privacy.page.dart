@@ -5,7 +5,7 @@ import 'package:dtc_harleys_app/components/my.appbar.dart';
 import 'package:dtc_harleys_app/components/progress.dart';
 
 const String _title = 'Política de Privacidade';
-const String _pathLogoImage = 'assets/imgs/logo.png';
+const String _pathLogoImage = 'lib/assets/imgs/logo.png';
 
 class PDFScreen extends StatefulWidget {
   final String? path;

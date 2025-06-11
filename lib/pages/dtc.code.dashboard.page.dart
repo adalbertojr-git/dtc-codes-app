@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:dtc_harleys_app/pages/privacy.page.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:dtc_harleys_app/common/settings.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +43,7 @@ class _DtcCodeDashboardPageState extends State<DtcCodeDashboardPage> {
     @override
   void initState() {
     super.initState();
-    createFileOfPdfUrl().then((f) {
+    fromAsset('lib/assets/pdfs/ocorrencia.pdf', 'ocorrencia').then((f) {
       setState(() {
         remotePDFpath = f.path;
       });
@@ -256,22 +256,15 @@ class _DtcCodeDashboardPageState extends State<DtcCodeDashboardPage> {
     ),
   );
 
-
-  Future<File> createFileOfPdfUrl() async {
+  Future<File> fromAsset(String asset, String filename) async {
+    // To open from assets, you can copy them to the app storage folder, and the access them "locally"
     Completer<File> completer = Completer();
-    print("Start download file from internet!");
-    try {
-      final url =
-          "https://firebasestorage.googleapis.com/v0/b/hcslzapp.appspot.com/o/docs%2FPOL%C3%8DTICA%20DE%20PRIVACIDADE.pdf?alt=media&token=7d977af4-9463-4053-a802-e6d1bb4265cb";
-      final filename = url.substring(url.lastIndexOf("/") + 1);
-      var request = await HttpClient().getUrl(Uri.parse(url));
-      var response = await request.close();
-      var bytes = await consolidateHttpClientResponseBytes(response);
-      var dir = await getApplicationDocumentsDirectory();
-      print("Download files");
-      print("${dir.path}/$filename");
-      File file = File("${dir.path}/$filename");
 
+    try {
+      var dir = await getApplicationDocumentsDirectory();
+      File file = File("${dir.path}/$filename");
+      var data = await rootBundle.load(asset);
+      var bytes = data.buffer.asUint8List();
       await file.writeAsBytes(bytes, flush: true);
       completer.complete(file);
     } catch (e) {
@@ -280,6 +273,7 @@ class _DtcCodeDashboardPageState extends State<DtcCodeDashboardPage> {
 
     return completer.future;
   }
+  
 }
 
 class _BarButton extends StatelessWidget {
