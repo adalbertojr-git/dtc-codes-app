@@ -7,16 +7,13 @@ class DegradeBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.white,
-              Colors.deepOrange
-            ],
-            begin: FractionalOffset.topLeft,
-            end: FractionalOffset.bottomRight,
-          ),
-        ),
-        height: MediaQuery.of(context).size.height,
-        child: _widget,
-      );
+    decoration: BoxDecoration(
+      gradient: LinearGradient(
+        colors: [Colors.black, Colors.deepOrange],
+        begin: FractionalOffset.topLeft,
+        end: FractionalOffset.bottomRight,
+      ),
+    ),
+    child: Center(child: SizedBox(width: 60, height: 60, child: _widget,),),
+  );
 }

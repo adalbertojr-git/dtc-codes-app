@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:dtc_harleys_app/components/progress.dart';
 import 'package:dtc_harleys_app/pages/privacy.page.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
