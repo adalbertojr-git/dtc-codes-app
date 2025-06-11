@@ -120,7 +120,6 @@ class DtcCodeListPageState extends State<DtcCodeListPage> {
                           Container(
                             alignment: Alignment.centerRight,
                             child: Text(
-                              '\n' +
                                   _getGroup(_controller.listFiltered[i].code),
                               textAlign: TextAlign.left,
                               style: TextStyle(color: Colors.black,)
