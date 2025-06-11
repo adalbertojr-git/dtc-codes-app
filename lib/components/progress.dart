@@ -16,6 +16,9 @@ class Progress extends StatelessWidget {
           isPaused: false,
           animation: 'animation-hc',
         ),*/
-        CircularProgressIndicator(),
+        CircularProgressIndicator(
+          color: Colors.orange,
+          strokeWidth: 5,
+        ),
       );
 }

@@ -14,6 +14,19 @@ class DegradeBackground extends StatelessWidget {
         end: FractionalOffset.bottomRight,
       ),
     ),
-    child: Center(child: SizedBox(width: 60, height: 60, child: _widget,),),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+      Center(
+        child: SizedBox(
+          width: 60, 
+          height: 60, 
+          child: _widget,
+          ),
+        ),
+        SizedBox(height: 30,),
+        Text('Aguarde...', style: TextStyle(fontSize: 16))
+    ],
+    ) 
   );
 }

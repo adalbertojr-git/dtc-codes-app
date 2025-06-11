@@ -36,7 +36,9 @@ class _LoadingState extends State<Loading> {
           isPaused: false,
           animation: 'animation-hc',
         ),*/
-        CircularProgressIndicator(),
+        CircularProgressIndicator(
+          color: Colors.orange,
+        ),
       );
 
   _callDashboard() async {
