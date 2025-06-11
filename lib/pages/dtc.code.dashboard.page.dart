@@ -88,9 +88,8 @@ class _DtcCodeDashboardPageState extends State<DtcCodeDashboardPage> {
     child: ListView(
       children: <Widget>[
         Text(_labelAppTitle, textAlign: TextAlign.center),
-        UserAccountsDrawerHeader(
-          accountName: Text('Olá, Harleyro(a)'),
-          accountEmail: Text('gapsolutions.slz@gmail.com'),
+        DrawerHeader(
+          child: Container(),
           decoration: BoxDecoration(
             image: DecorationImage(
               image: ExactAssetImage(_pathLogo),
