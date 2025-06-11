@@ -106,14 +106,18 @@ class DtcCodeAbbreviationListPageState
                         _controller.listFiltered[i].code,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
+                          color: Colors.black,
                         ),
                       ),
                       subtitle: Text(
                         _controller.listFiltered[i].description,
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
                       ),
                       leading: CircleAvatar(
                         child: Icon(Icons.abc_outlined),
-                        backgroundColor: Colors.white,
+                        backgroundColor: Colors.red,
                       ),
                     ),
                   );

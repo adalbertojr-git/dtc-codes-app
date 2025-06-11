@@ -14,6 +14,7 @@ import 'package:dtc_harleys_app/pages/dtc.code.access.newmodels.page.dart';
 const String _labelAppTitle = 'DTC Harleys App';
 const String _pathLogo = 'lib/assets/imgs/codigosdtc.png';
 const String _labelPrivacy = 'Política de privacidade';
+const String _pathPrivacy = 'lib/assets/pdfs/privacy.pdf';
 const List<String> _listScreens = ["Códigos DTC", "Siglas", "Saiba mais"];
 const List<String> _listScreensDesc = [
   "Códigos de erro catalogados pela HD",
@@ -40,10 +41,10 @@ class _DtcCodeDashboardPageState extends State<DtcCodeDashboardPage> {
     DtcCodeKnowMorePage(),
   ];
 
-    @override
+  @override
   void initState() {
     super.initState();
-    fromAsset('lib/assets/pdfs/ocorrencia.pdf', 'ocorrencia').then((f) {
+    fromAsset(_pathPrivacy, 'privacy').then((f) {
       setState(() {
         remotePDFpath = f.path;
       });
@@ -136,9 +137,7 @@ class _DtcCodeDashboardPageState extends State<DtcCodeDashboardPage> {
                 ),
                 SizedBox(
                   height: 100.0,
-                  child: Container(
-                    child: Image.asset(_pathLogo),
-                  ),
+                  child: Container(child: Image.asset(_pathLogo)),
                 ),
               ],
             );
@@ -233,7 +232,7 @@ class _DtcCodeDashboardPageState extends State<DtcCodeDashboardPage> {
           leading: Icon(_listIcons[index], size: 50, color: Colors.orange),
           title: Text(
             _listScreens[index],
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
           ),
           subtitle: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -241,7 +240,11 @@ class _DtcCodeDashboardPageState extends State<DtcCodeDashboardPage> {
             children: <Widget>[
               Text(
                 _listScreensDesc[index],
-                style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.normal),
+                style: TextStyle(
+                  fontSize: 12.0,
+                  fontWeight: FontWeight.normal,
+                  color: Colors.black,
+                ),
               ),
             ],
           ),
@@ -273,7 +276,6 @@ class _DtcCodeDashboardPageState extends State<DtcCodeDashboardPage> {
 
     return completer.future;
   }
-  
 }
 
 class _BarButton extends StatelessWidget {
@@ -318,7 +320,10 @@ class _BarButton extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Text(subtitle, style: TextStyle(fontSize: 12.0)),
+                Text(
+                  subtitle,
+                  style: TextStyle(fontSize: 12.0, color: Colors.black),
+                ),
               ],
             ),
           ),

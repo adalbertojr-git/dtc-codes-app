@@ -104,6 +104,7 @@ class DtcCodeListPageState extends State<DtcCodeListPage> {
                         _controller.listFiltered[i].code,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
+                          color: Colors.black
                         ),
                       ),
                       subtitle: Column(
@@ -113,6 +114,7 @@ class DtcCodeListPageState extends State<DtcCodeListPage> {
                             child: Text(
                               _controller.listFiltered[i].description,
                               textAlign: TextAlign.justify,
+                              style: TextStyle(color: Colors.black,)
                             ),
                           ),
                           Container(
@@ -121,6 +123,7 @@ class DtcCodeListPageState extends State<DtcCodeListPage> {
                               '\n' +
                                   _getGroup(_controller.listFiltered[i].code),
                               textAlign: TextAlign.left,
+                              style: TextStyle(color: Colors.black,)
                             ),
                           ),
                         ],
