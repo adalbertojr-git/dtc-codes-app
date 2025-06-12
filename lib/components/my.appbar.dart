@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const String _pathLogo = 'lib/assets/imgs/codigosdtc.png';
+const String _pathLogo = 'lib/assets/imgs/dtc.png';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget{
   final String _title;
