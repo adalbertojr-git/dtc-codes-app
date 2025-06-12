@@ -12,7 +12,7 @@ import 'package:dtc_harleys_app/pages/dtc.code.abbreviation.list.page.dart';
 import 'package:dtc_harleys_app/pages/dtc.code.access.newmodels.page.dart';
 
 const String _labelAppTitle = 'DTC Harleys App';
-const String _pathLogo = 'lib/assets/imgs/codigosdtc.png';
+const String _pathLogo = 'lib/assets/imgs/dtc.png';
 const String _labelPrivacy = 'Política de privacidade';
 const String _pathPrivacy = 'lib/assets/pdfs/privacy.pdf';
 const List<String> _listScreens = ["Códigos DTC", "Siglas", "Saiba mais"];

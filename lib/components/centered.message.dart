@@ -98,7 +98,7 @@ class _CenteredMessageState extends State<CenteredMessage> {
               radius: avatarRadius,
               child: ClipRRect(
                   borderRadius: BorderRadius.all(Radius.circular(avatarRadius)),
-                  child: Image.asset('lib/assets/imgs/codigosdtc.png')),
+                  child: Image.asset('lib/assets/imgs/dtc.png')),
             ),
           ),
         ],
