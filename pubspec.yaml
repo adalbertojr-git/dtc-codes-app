@@ -48,8 +48,8 @@ dependencies:
   flutter_native_splash: ^2.4.6
 
 flutter_launcher_icons:
-  image_path_android: "lib/assets/imgs/dtc.png"
-  image_path_ios: "lib/assets/imgs/dtc.png"
+  image_path_android: "lib/assets/imgs/splash.png"
+  image_path_ios: "lib/assets/imgs/splash.png"
   android: true # can specify file name here e.g. "ic_launcher"
   ios: true 
 
@@ -77,7 +77,7 @@ flutter_native_splash:
 
   # The image parameter allows you to specify an image used in the splash screen.  It must be a
   # png file and should be sized for 4x pixel density.
-  image: lib/assets/imgs/dtc.png
+  image: lib/assets/imgs/splash.png
 
 
   # The branding property allows you to specify an image used as branding in the splash screen.
@@ -116,7 +116,7 @@ flutter_native_splash:
     # 768 pixels in diameter.  To fit a 1152x1152 image within a circle with a 768 diameter, simply 
     # ensure that the most important design elements of your image are placed within a circular area
     # with a 768 diameter at the center of the 1152x1152 canvas.
-    image: lib/assets/imgs/dtc.png
+    image: lib/assets/imgs/splash.png
     #background_image: lib/assets/imgs/background.png
 
     # Splash screen background color.
@@ -236,7 +236,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - lib/assets/imgs/dtc.png
-    - lib/assets/imgs/background.png
+    - lib/assets/imgs/splash.png
     - lib/assets/anims/splash.flr
     - lib/assets/pdfs/privacy.pdf
 
